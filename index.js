@@ -306,9 +306,7 @@ class Package {
     this.media.push({name: name || filename, filename})
   }
 
-  writeToFile(filename) {
-    const {name, fd} = tmp.fileSync()
-    const db = require('better-sqlite3')(name)
+  writeToFile(filename = this.createDb()) {
     this.write(db)
     db.close()
     const out = fs.createWriteStream(filename)
@@ -323,6 +321,11 @@ class Package {
     })
     archive.append(JSON.stringify(media_info), { name: 'media' })
     return archive.finalize()
+  }
+
+  createDb() {
+    const {name, fd} = tmp.fileSync()
+    return require('better-sqlite3')(name)
   }
 
   write(db) {
