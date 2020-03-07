@@ -1,6 +1,6 @@
 {
   "name": "@silvestre/mkanki",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Generate Anki decks. Supports cloze deletion and media.",
   "main": "index.js",
   "scripts": {},

@@ -306,7 +306,7 @@ class Package {
     this.media.push({name: name || filename, filename})
   }
 
-  writeToFile(filename = this.createDb()) {
+  writeToFile(name, db = this.createDb()) {
     this.write(db)
     db.close()
     const out = fs.createWriteStream(filename)
